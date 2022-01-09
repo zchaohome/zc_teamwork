@@ -1,0 +1,78 @@
+<template>
+    <lightning-card
+      title="CSVインポート"
+      icon-name="custom:custom15"
+    >
+      <div style="padding: 0 20px;">
+        <div style="padding: 10px 0 0 0;
+        ">
+          <div class="slds-is-relative"
+              style="
+                height: 40px;
+                margin: 0 0 20px 0;
+              "
+            >
+            <lightning-combobox
+              name="sObjectList"
+              label="オブジェクトをご指定ください"
+              value={selectedValue}
+              placeholder="Select Object"
+              options={options}
+              onchange={handleChange} >
+            </lightning-combobox>
+          </div>
+          <div class="slds-is-relative"
+              style="height:15px; margin: 0 0 20px 0;"
+          >
+          <p if:true={isUser}>
+            <lightning-formatted-url value="/resource/denkihoan__user_template?" tooltip="ユーザ一括登録のフォーマットをダウンロードできます" label="User_Template.xlsx" target="_blank"></lightning-formatted-url>
+          </p>
+          </div>
+          <lightning-input
+            type="file"
+            name="csv"
+            label="CSVファイルを選択してください"
+            onchange={handleCsvUpload}
+            accept="text/csv, .csv"
+          ></lightning-input>
+        </div>
+        <p style="padding: 10px 0 0 0;">{fileName}</p>
+        <div style="
+          padding: 20px 0 10px 0;
+          margin: 0 0 0 -5px;
+        ">
+          <div
+            if:true={isLoaded}
+            class="slds-is-relative"
+            style="
+              height: 60px;
+              margin: 0 0 -10px 0;
+            "
+          >
+            <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+          </div>
+          <div if:false={isLoaded}>
+            <div if:true={isSend}>
+              <lightning-button
+                  variant="brand"
+                  label="送信"
+                  title="Primary action"
+                  onclick={handleUpload}
+                  class="slds-m-left_x-small">
+              </lightning-button>
+            </div>
+            <div if:false={isSend}>
+              <lightning-button
+                variant="brand"
+                label="送信"
+                disabled
+                title="Primary action"
+                onclick={handleUpload}
+                class="slds-m-left_x-small">
+              </lightning-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </lightning-card>
+  </template>

@@ -1,0 +1,23 @@
+<apex:page extensions="DependencyList" standardController="Opportunity" showHeader="false">
+ <apex:sectionHeader title="Country City連動" />
+ <apex:form id="form">
+<apex:pageMessages id="message" escape="false" />
+    <apex:pageBlock id="pageBlock" title="Country City連動">
+        <apex:pageBlockSection title="Country City連動" columns="2">
+        <apex:pageBlockSectionItem >
+            <apex:outputLabel value="Country" for="Country"/>
+            <apex:selectList value="{!Country}" size="1" id="Country">
+              <apex:selectOptions value="{!getCountries}"/>
+              <apex:actionSupport event="onchange" rerender="City"/>
+            </apex:selectList>         
+         </apex:pageBlockSectionItem>　
+    　  <apex:pageBlockSectionItem >
+            <apex:outputLabel value="City" for="City"/>
+            <apex:selectList value="{!City}" size="1" id="City">
+              <apex:selectOptions value="{!getCities}"/>
+            </apex:selectList>        
+       　</apex:pageBlockSectionItem>     
+        </apex:pageBlockSection>                     
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

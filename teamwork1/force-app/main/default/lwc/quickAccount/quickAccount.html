@@ -1,0 +1,119 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+<!--
+    @description       :
+    @author            : Amit Singh
+    @group             :
+    @last modified on  : 06-03-2021
+    @last modified by  : Amit Singh
+    Modifications Log
+    Ver   Date         Author       Modification
+    1.0   06-03-2021   Amit Singh   Initial Version
+-->
+<template>
+    <lightning-quick-action-panel header="Quick Action Title" style="width: 80%;">
+        <lightning-spinner alternative-text="Loading" size="small" if:true={isSpinner} ></lightning-spinner>
+        <div class="slds-size_1-of-2" style="width:40%;float: left;margin-right: 10px;">
+                    <lightning-combobox name="progress1" label="Status1" value={value1} placeholder="Select Progress" options={options1}
+                        onchange={handleChange1}>
+                    </lightning-combobox>
+                    <p>Selected value is: {value1}</p>
+        </div>
+        <div class="slds-size_1-of-2" style="width:40%;float: left;">
+                    <lightning-combobox name="progress2" label="Status2" value={value2} placeholder="Select Progress" options={options2}
+                        onchange={handleChange2}>
+                    </lightning-combobox>
+                    <p>Selected value is: {value2}</p>
+        </div>
+
+
+<!--
+        <div class="slds-size_1-of-2" style="width:40%;float: left;margin-right: 10px;">
+            <lightning-input type="Type" variant="standard" value={name} name="name" label="Account Name" onchange={handleChange} ></lightning-input>
+        </div>
+        <div class="slds-size_1-of-2" style="width:40%;float: left;">
+            <lightning-input type="text" variant="standard" value={phone} name="phone" label="Account Phone" onchange={handleChange} ></lightning-input>
+        </div>-->
+        <div class="slds-p-horizontal_small">
+            <table if:true={_accs} class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+                aria-label="Example table for wrapper classes">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Place">Place</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Account Id">Account Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Account Name">Account Number</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Account Phone">Account Phone</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Account Phone">field1</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Account Phone">field2</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={_accs} for:each={_accs} for:item="accRec" for:index="index">
+                        <tr class="slds-hint-parent" key={accRec.accRecord.Id}>
+                            <td data-label="Place">
+                                <div class="slds-truncate" title="Account Name">{index}</div>
+                            </td>
+                            <td data-label="Account Id">
+                                <div class="slds-truncate" title="Account Id">{accRec.accRecord.Name}</div>
+                            </td>
+                            <td data-label="Account Name">
+                                <div class="slds-truncate" title="Account Name">{accRec.accRecord.Number}</div>
+                            </td>
+                            <td data-label="Account Phone">
+                                <div class="slds-truncate" title="Account Phone">{accRec.accRecord.Phone}</div>
+                            </td>
+
+                            <td data-label="Account Phone">
+                                    <lightning-input type="Type" variant="label-hidden" value={accRec.accRecord.Name} name="name" label="" >
+                                    </lightning-input>
+                            </td>
+                            <td data-label="Account Phone">
+                                    <lightning-input type="text" variant="label-hidden" value={accRec.accRecord.Phone} name="phone" label=""
+                                       ></lightning-input>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="slds-p-horizontal_small">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+                aria-label="Example table for wrapper classes">
+                <thead>
+                </thead>
+                <tbody>
+                        <tr class="slds-hint-parent">
+                            <td data-label="Account Id" style="width: 64px;">
+                                <div class="slds-truncate" title="Account Id">Total</div>
+                            </td>
+                            <td data-label="Account Name" style="width: 386px;text-align: center;">
+                                10000.11
+                            </td>
+                            <td data-label="Account Phone" style="width: 400px;text-align: center;">
+                                20000.22
+                            </td>
+
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <div slot="footer">
+           <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+            &nbsp; &nbsp;
+            <lightning-button variant="brand" label="Cancel" onclick={closeAction}></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

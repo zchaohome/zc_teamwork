@@ -1,0 +1,4 @@
+<aura:component >
+    <c:C2 /> <!-- Child Component of C2 --> 
+    <aura:handler name="first" event="c:myEvent1" action="{!c.doSave }"/>
+</aura:component>

@@ -1,0 +1,5 @@
+<aura:component >
+    <aura:registerEvent name="first" type="c:myEvent2"/> 
+    
+    <lightning:button label="Next" onclick="{!c.invoke}"/>
+</aura:component>

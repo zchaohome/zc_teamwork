@@ -1,0 +1,8 @@
+<apex:page standardController="Activity_Report__c">
+<apex:repeat value="{!Activity_Report__c}" var="parents">
+        <apex:repeat value="{!parents.X12__r}" var="childs">
+            {!childs.Name}
+          <br/>
+        </apex:repeat>
+    </apex:repeat>
+</apex:page>

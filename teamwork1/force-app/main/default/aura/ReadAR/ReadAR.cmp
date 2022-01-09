@@ -1,0 +1,35 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller = "ReadAR"  >  
+    <aura:attribute name="objects" type="Activity_Report__c"/>  
+    <aura:attribute name="objectsError" type="String"/> 
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Name,flag__c"
+                      targetFields="{!v.objects}"
+                      targetError="{!v.objectsError}"
+                      />
+    <div class="slds-is-relative" ><!--範囲内に表示を設定-->           
+        <aura:if isTrue="{!v.objects.flag__c}">
+          <div class="modal-body scrollable slds-modal__content slds-p-around--medium">
+                <h2>すでに既読しましたから、撤回しましょうか</h2> 
+                {!v.objects.flag__c}
+            </div>              
+            <aura:set attribute="else">
+                  <div class="modal-body scrollable slds-modal__content slds-p-around--medium">
+                    <h2>まだ既読していません、既読しましょうか</h2> 
+                    {!v.objects.flag__c}                 
+                </div>                
+
+         </aura:set>
+        </aura:if>       
+        <aura:if isTrue="{!not(empty(v.objectsError))}">
+            <ui:message title="Error" severity="error" closable="true">
+                {!v.objectsError}
+            </ui:message>
+        </aura:if>
+          <div class="modal-footer slds-modal__footer" style="height:70px">
+                    <button class="slds-button slds-button--brand cuf-publisherShareButton undefined uiButton" style="right:150px" onclick="{!c.select}" >YES</button>
+                    <button class="slds-button slds-button--neutral cuf-publisherCancelButton uiButton" style="right:140px" onclick="{!c.doCancel}" >NO</button>            
+                </div>
+                    
+    </div>     
+</aura:component>

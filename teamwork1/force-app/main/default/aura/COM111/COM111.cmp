@@ -1,0 +1,17 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,force:hasSObjectName" access="global" >
+<aura:attribute name="acc" type="Account" default="{'sobjectType':'Account'}"/>
+
+<!-- <div style="margin-left:100px;width:500px;border:1px solid black;margin-top:50px;"> </div>-->
+<lightning:card title="New Customer" iconName="standard:account">
+<aura:set attribute="actions">
+<lightning:button label="Save" />
+<lightning:button label="Cancel" />
+</aura:set>
+<!-- <div style="padding:30px;"> </div>-->
+<lightning:input label="Name" value="{!v.acc.Name}"/>
+<lightning:input label="Phone" value="{!v.acc.Phone}"/>
+<lightning:input label="Industry" value="{!v.acc.Industry}"/>
+
+</lightning:card>
+
+</aura:component>

@@ -1,0 +1,16 @@
+<aura:component controller="AccountController">
+    <aura:attribute name="lstAccounts" type="List"/>
+    <aura:attribute name="myColumns" type="List"/>
+    <aura:attribute name="flag1" type="boolean" default="false"/>
+    
+    <aura:handler name="first" event="c:AccountEvent" action="{!c.displayAccounts}"/>
+    <c:AccountEventC1 />
+    <aura:if isTrue="{!v.flag1}">
+        <div style="margin-left:100px;margin-top:20px;width:500px;">
+            <lightning:dataTable
+                    keyField="Id"
+                    data ="{!v.lstAccounts}"
+                    columns="{!v.myColumns}" /> 
+        </div>
+    </aura:if>
+</aura:component>

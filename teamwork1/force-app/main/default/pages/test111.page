@@ -1,0 +1,10 @@
+<apex:page >
+
+  <h1>Visualforce</h1>
+  <p>Page</p>
+
+  <c:myComponent2 text="1 Component" color="#FF0000" />
+  <c:myComponent2 text="2 Component" color="#00AA00" />
+  <c:myComponent2 text="3 Component" color="#0000FF" />
+  
+</apex:page>

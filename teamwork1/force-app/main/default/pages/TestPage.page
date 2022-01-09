@@ -1,0 +1,21 @@
+<apex:page controller="MyController1" tabStyle="Account">
+    <script type="text/javascript">
+    function method1(){
+        //var num = document.getElementById('{!$Component.form1.block1.we}');
+        var num = document.getElementById('j_id0:form1:block1:we');
+        //alert('您输入了：'+ num.value);
+        //alert(num.value+'的平方是：'+ num.value*num.value);
+        num.value  = num.value*num.value;
+        //alert('222->'+document.getElementById('j_id0:form1:block1:we').value);
+        //console.log(document.getElementById('{!$Component.form1.block1.we}').value);
+        //onclick="return method1();"
+    }
+    </script>
+    <apex:form id="form1">
+        <apex:pageBlock title="Hello {!$User.FirstName}!" id="block1">
+            <apex:inputText id="we" value="{!aaa}"/> <p/>
+            <apex:commandButton action="{!calc}" value="calc to apex"/>
+            <apex:commandButton onclick="return method1();" value="calc to js"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,18 @@
+<apex:page standardController="Account" extensions="AccountExtensionsController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="取引先情報">
+                <apex:inputField value="{!Account.id}" />
+                <apex:inputField value="{!Account.Name}" />
+                <apex:inputField value="{!Account.Phone}" />
+                <apex:inputField value="{!Account.Fax}" />
+                <apex:inputField value="{!Account.Description}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="标准保存" action="{!save}"/>
+                <apex:commandButton value="保存" action="{!quicksave}"/>
+                <apex:commandButton value="やり直し" action="{!redo}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

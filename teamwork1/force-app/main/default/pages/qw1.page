@@ -1,0 +1,15 @@
+<apex:page id="thePage" >
+<apex:toolbar id="TheToolbar">
+<apex:outputText value="Sample Toolbar"></apex:outputText>
+<Apex:toolbarGroup itemseparator="line" id="TheToolbarlinks">
+<Apex:outputLink value="https://iview.abc.net.au/show/gardening-australia">iview</Apex:outputLink>
+<Apex:outputLink value="https://www.youtube.com/c/CareerVidz">career</Apex:outputLink>
+</Apex:toolbarGroup>
+<apex:toolbarGroup itemseparator="line" location="right" id="Toobargp2">
+<apex:form >
+<apex:inputText id="theInputText">Enter text:</apex:inputText>
+<apex:commandButton value="Search" id="thecommandlink"/>
+</apex:form>
+</apex:toolbarGroup>
+</apex:toolbar>
+</apex:page>

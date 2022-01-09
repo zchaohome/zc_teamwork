@@ -1,0 +1,48 @@
+<template>
+      <article  class="slds-card">
+            <div  class="slds-card__header  slds-grid">
+                  <div  class="slds-media">
+                        <div  class="slds-media__figure">
+                              <span  class="slds-icon_container  slds-icon-standard-opportunity">
+                                    <lightning-icon  icon-name="standard:user"  size="small"></lightning-icon>
+                                  </span>
+                            </div>
+                        <div  class="slds-media__body">
+                              <span  class="slds-card__header-title  slds-truncate  slds-m-right_xx-small">
+                                    User Info（lwc1）  </span>
+                            </div>
+                      </div>
+                </div>
+            <div  class="slds-card__body  slds-card__body_inner">
+                  <template  if:true={record.data}>
+                        <dl  class="slds-list_horizontal  slds-wrap">
+                              <dt  class="slds-item_label  slds-text-color_weak  slds-truncate"  >Name:</dt>
+                              <dd  class="slds-item_detail  slds-truncate">
+                                    <lightning-formatted-text  class="font-red"  value={record.data.Name}>
+                                        </lightning-formatted-text>
+                                  </dd>
+                              <dt  class="slds-item_label  slds-text-color_weak  slds-truncate"  >Username:</dt>
+                              <dd  class="slds-item_detail  slds-truncate"  >
+                                    <lightning-formatted-text  value={record.data.Username}></lightning-formatted-text>
+                                  </dd>
+                              <template  if:true={record.data.UserRole}>
+                                    <dt  class="slds-item_label  slds-text-color_weak  slds-truncate"  >UserRole:</dt>
+                                    <dd  class="slds-item_detail  slds-truncate"  >
+                                          <lightning-formatted-text  value={record.data.UserRole.Name}>
+                                              </lightning-formatted-text>
+                                        </dd>
+                                  </template>
+                              <dt  class="slds-item_label  slds-text-color_weak  slds-truncate"  >Profile:</dt>
+                              <dd  class="slds-item_detail  slds-truncate"  >
+                                    <lightning-formatted-text  value={record.data.Profile.Name}>
+                        </lightning-formatted-text>
+                                  </dd>
+                              <dt  class="slds-item_label  slds-text-color_weak  slds-truncate"  >UserType:</dt>
+                              <dd  class="slds-item_detail  slds-truncate"  >
+                                    <lightning-formatted-text  value={record.data.UserType}></lightning-formatted-text>
+                                  </dd>
+                            </dl>
+                      </template>
+                </div>
+          </article>
+</template>

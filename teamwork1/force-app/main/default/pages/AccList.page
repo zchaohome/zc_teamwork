@@ -1,0 +1,53 @@
+<apex:page standardController="Account">
+    <apex:form >
+        <apex:pageBlock >
+        <!--
+          <table class="dataTable" id="table" style="border-collapse:separate; border-spacing:5px;">
+            <apex:repeat value="{!Account}" var="o">
+              <tr id="tr" style="background:#d2eaf1;height:30px">
+                <td id="warp" colspan="2" style="width:50px">
+                   <apex:outputText value="name"/>
+                </td>
+                <td id="warp" colspan="2"  style="width:50px">
+                   <apex:outputText value="Site"/>
+                </td>
+                <td id="warp" colspan="2"  style="width:50px">
+                   <apex:outputText value="BillingState"/>
+                </td>
+                <td id="warp" colspan="2"  style="width:50px">
+                   <apex:outputText value="AccountNumber"/>
+                </td>
+                <td id="warp" colspan="2"  style="width:50px">
+                   <apex:outputText value="Type"/>
+                </td>                  
+              </tr>                
+              <tr id="tr" style="background:#d2eaf1;height:30px">
+                <td id="warp" colspan="2" style="width:50px">
+                   <apex:outputText value="{!o.name}"/>
+                </td>
+                <td id="warp" colspan="2"  style="width:50px">
+                   <apex:outputText value="{!o.Site}"/>
+                </td>
+                <td id="warp" colspan="2"  style="width:50px">
+                   <apex:outputText value="{!o.BillingState}"/>
+                </td>
+                <td id="warp" colspan="2"  style="width:50px">
+                   <apex:outputText value="{!o.AccountNumber}"/>
+                </td>
+                <td id="warp" colspan="2"  style="width:50px">
+                   <apex:outputText value="{!o.Type}"/>
+                </td>                  
+              </tr>
+            </apex:repeat>
+          </table>-->
+   
+        <apex:pageBlockTable value="{!account}" var="item">
+            <apex:column value="{!item.name}"/>
+            <apex:column value="{!item.Site}"/>
+            <apex:column value="{!item.BillingState}"/>
+            <apex:column value="{!item.AccountNumber}"/>
+            <apex:column value="{!item.Type}"/>
+        </apex:pageBlockTable>
+</apex:pageBlock>
+    </apex:form>
+</apex:page>

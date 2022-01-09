@@ -1,0 +1,111 @@
+<template>
+    <lightning-map
+        map-markers={mapMarkers}
+        selected-marker-value={selectedMarkerValue}
+        markers-title="account list"
+        onmarkerselect={handleMarkerSelect}
+        center={center}
+        list-view="auto">
+    </lightning-map>
+
+     <!-- lightning button for open modal window -->
+        <lightning-button variant="brand"
+        label="依頼ボタン"
+        title="依頼ボタン"
+        onclick={showModalBox}
+        class="slds-m-left_x-small">
+     </lightning-button>
+     <!--Use template if:true to display/hide popup based on isModalOpen value--> 
+     <template if:true={isShowModal}>
+         <!-- Modal/Popup Box LWC starts here -->
+         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+             <div class="slds-modal__container">
+                 <!-- Modal/Popup Box LWC header here -->
+                 <header class="slds-modal__header">
+                     <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                         <lightning-icon icon-name="utility:close"
+                             alternative-text="close"
+                             variant="inverse"
+                             size="small" ></lightning-icon>
+                         <span class="slds-assistive-text">キャンセル</span>
+                     </button>
+                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">依頼を出しますか。</h2>
+                 </header>
+                 <!-- Modal/Popup Box LWC body starts here -->
+                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                     <p><b>これから依頼を出します。
+                     </b></p>
+                     <p><b>少々お待ちください。
+                     </b></p>
+                 </div>
+                 <!-- Modal/Popup Box LWC footer starts here -->
+                 <footer class="slds-modal__footer">
+                     <button class="slds-button slds-button_neutral" onclick={hideModalBox} title="Cancel">キャンセル</button>
+                     <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">確定</button>
+                 </footer>
+             </div>
+         </section>
+         <div class="slds-backdrop slds-backdrop_open"></div>
+     </template>
+
+     <template if:true={isShowModal2}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox2}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">キャンセル</span>
+                    </button>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">マンションを依頼しないでください。</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <p><b>
+                    </b></p>
+                    <p><b>検針員を依頼してください。
+                    </b></p>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={hideModalBox2} title="Cancel">キャンセル</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={isShowModal3}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox3}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">キャンセル</span>
+                    </button>
+                    <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">依頼完了確認してください。</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                    <p><b>
+                    </b></p>
+                    <p><b>依頼完了しました。
+                    </b></p>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={hideModalBox3} title="Cancel">確定</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

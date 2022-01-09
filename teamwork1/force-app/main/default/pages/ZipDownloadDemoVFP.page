@@ -1,0 +1,27 @@
+<apex:page controller="ZipDownloadDemoController" standardStylesheets="false" showHeader="false" applyHtmlTag="false" applyBodyTag="false" >
+<!--  <link rel="stylesheet" href="{! URLFOR($Resource.bootstrapsf1, 'src/dist/css/bootstrap.css')}" />-->
+  <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Zip Download Demo</h1>
+  <div id="dldemo" class="btn btn-default">download</div>
+  
+  <script>
+    var RemoteActionModule = ZipDownloadDemoController;
+    $(function() {
+      $('#dldemo').click(function(){
+        var objectId = '0010o00002pHGZU';
+        RemoteActionModule.getZipDownloadUrl(objectId, function(result, event) {
+          if(event.status) {
+            location.href = result;
+            return false;
+          } else {
+            console.log('error=' + JSON.stringify(event));
+          }
+        }, {
+          escape: false
+        });
+      });
+    });
+  </script>
+</apex:page>

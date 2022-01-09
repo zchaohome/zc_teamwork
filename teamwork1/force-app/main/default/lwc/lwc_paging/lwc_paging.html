@@ -1,0 +1,14 @@
+<template>
+            <lightning-layout>
+                        <lightning-layout-item>
+                                    <lightning-button  label="前一页"  icon-name="utility:chevronleft"  onclick={previousHandler}>
+                                        </lightning-button>
+                            </lightning-layout-item>
+                        <lightning-layout-item  flexibility="grow"></lightning-layout-item>
+                        <lightning-layout-item>
+                                    <lightning-button  label="下一页"  icon-name="utility:chevronright"  icon-position="right"
+                                                                                                    onclick={nextHandler}>
+                                        </lightning-button>
+                            </lightning-layout-item>
+                </lightning-layout>
+</template>

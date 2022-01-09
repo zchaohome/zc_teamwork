@@ -1,0 +1,16 @@
+<apex:component >
+    
+    <apex:attribute name="text" description="Test Content"
+        type="String" required="true" />
+    <apex:attribute name="color" description="colorcode"
+        type="String" required="true" />
+    
+    <div style="border: 1px solid #ccc; padding: 20px;">
+            
+        <h1>Component Content</h1>
+        <h1 style="color:{!color}; ">
+            <apex:outputtext value="{!text}" />
+        </h1>
+    </div>
+
+</apex:component>

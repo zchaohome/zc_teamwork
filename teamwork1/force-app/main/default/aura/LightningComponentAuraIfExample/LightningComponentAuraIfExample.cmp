@@ -1,0 +1,58 @@
+<aura:component >
+    <aura:attribute name="variable1" type="boolean" default="true"/>
+    <aura:attribute name="variable2" type="boolean" default="false"/>
+    <aura:attribute name="variable3" type="boolean" default="true"/>
+    <aura:attribute name="variable4" type="boolean" default="false"/>
+     
+    <!--Example of aura:if-->
+    <aura:if isTrue="{!v.variable1}">
+        <div style="background-color:LightBlue">
+            This should be displayed as variable1 is true
+        </div>
+    </aura:if>
+     
+    <!--Example of aura:if with aura:set else attribute-->
+    <aura:if isTrue="{!v.variable2}">
+        <div style="background-color:LightBlue">
+            This should not be displayed as variable2 is false so else part will execute.
+        </div>
+        <aura:set attribute="else">
+            <div style="background-color:LightBlue">
+                This should be displayed as if condition is not satisfied.
+            </div>
+        </aura:set>
+    </aura:if>
+     
+    <!--Example of using AND condition with aura:if-->
+    <aura:if isTrue="{!and(v.variable1, v.variable2)}" >
+        <div style="background-color:LightBlue">
+            and Example. As variable1 is true and variable2 is false so nothing will be displayed.
+        </div>
+    </aura:if>
+     
+    <aura:if isTrue="{!and(v.variable1, v.variable3)}" >
+        <div style="background-color:LightBlue">
+            and Example. As variable1 is true and variable3 is true so it will be displayed.
+        </div>
+    </aura:if>
+     
+    <!--Example of using OR condition with aura:if-->
+    <aura:if isTrue="{!or(v.variable1, v.variable2)}" >
+        <div style="background-color:LightBlue">
+            or Example. As variable1 is true and variable2 is false so it will be displayed.
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!or(v.variable2, v.variable4)}" >
+        <div style="background-color:LightBlue">
+            or Example. As variable2 is false and variable4 is false so it will not be displayed.
+        </div>
+    </aura:if>
+     
+    <!--aura:if with complex or and condition-->
+    <aura:if  isTrue="{!or(and(v.variable1, v.variable3) , v.variable2 ) }" >
+        <div style="background-color:LightBlue">
+            complex or and example. It will showup as variable1 is true, variable3 is true and variable2 is false
+        </div>
+    </aura:if>
+     
+</aura:component>

@@ -1,0 +1,17 @@
+<aura:component controller="LightningMapExampleController" implements="flexipage:availableForAllPageTypes,force:appHostable">
+    <aura:attribute name="mapMarkers" type="Object"/>
+    <aura:attribute name="selectedMarkerValue" type="String" />
+    
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <div class="slds-box slds-theme--default">
+        <lightning:map 
+                       mapMarkers="{! v.mapMarkers }"
+                       selectedMarkerValue="{!v.selectedMarkerValue}"
+                       markersTitle="account list"
+                       listView="auto"
+                       showFooter="false"
+                       onmarkerselect="{!c.handlerMarkerSelect}" />
+    </div>
+    
+</aura:component>

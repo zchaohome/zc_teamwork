@@ -1,0 +1,6 @@
+<apex:page standardController="Contact" extensions="ContactListPageController" recordSetVar="contactList" contentType="application/vnd.ms-excel#filename.csv;charset=UTF-8;">
+{!utf8Bom}取引先名,取引先担当者ID,取引先担当者名
+<apex:repeat var="rec" value="{!exportObjectList}">
+{!rec.AccountName},{!rec.ConactId},{!rec.ConactName}
+</apex:repeat>
+</apex:page>

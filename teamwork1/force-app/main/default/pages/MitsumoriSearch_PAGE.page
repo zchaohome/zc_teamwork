@@ -1,0 +1,65 @@
+<apex:page controller="MitsumoriSearch_CTRL">
+<script>
+        function doDeleteJs(accid) {
+            if (window.confirm("削除してよろしいでしょうか。")) {
+                doDeleteFn(accid);
+            }
+        }
+         function doEditJs(accid) {
+             // var uuu="./EditAccountList_PAGE?core.apexpages.request.devconsole=1&Id="+accid;
+             // window.location.href =uuu;
+        }
+ </script>      
+ <style type="text/css">
+   /* footer右へ表示*/
+   .footer{
+     text-align: right;
+   }
+ </style>    
+    <apex:sectionHeader subtitle="見積検索" title="見積"/>
+       <apex:form id="formId">  
+       <apex:pageMessages id="message"/>             
+            <apex:pageBlock > 
+                <apex:pageBlockSection columns="1" id="selction">
+                    <apex:outputPanel id="selectListPanel">
+                        <apex:selectList value="{!selectYear}" multiselect="false" size="1" id="selectYear">
+                            <apex:selectOptions value="{!selectYearItem}" id="selectYearItem" />
+                         </apex:selectList>
+                         <apex:outputText value=" 年 " />
+                         <apex:selectList value="{!selectMonth}" multiselect="false" size="1" id="selectMonth">
+                             <apex:selectOptions value="{!selectMonthItem}" id="selectMonthItem" />
+                         </apex:selectList> 
+                         <apex:outputText value=" 月 " />&nbsp;&nbsp;&nbsp;
+                         <apex:inputText value="{!AccountName}"  id="in">企業名：</apex:inputText> 
+                    </apex:outputPanel>                  
+                </apex:pageBlockSection>  
+               <apex:pageBlockButtons location="bottom" html-align="right">
+                   <apex:commandButton value="検索" action="{!doSearch}" reRender="formId,formId2"/>  
+                   <apex:commandButton value="見積作成" action="{!createMitsumori}" reRender="formId"/>                 
+               </apex:pageBlockButtons>      
+           </apex:pageBlock>  
+       </apex:form> 
+    
+       <apex:form id="formId2">  
+        <apex:actionFunction name="doDeleteFn" action="{!doDelete}" reRender="formId" >
+            <apex:param name="id" value="" />       
+        </apex:actionFunction>                
+           <apex:pageBlock >
+               <apex:outputPanel id="showpanel">
+                   <apex:pageBlockTable value="{!prds}" var="mm" footerClass="footer" id="pageBlockTable">
+                       <apex:column headerValue=""  width="80px">    
+                          <apex:commandButton value="詳細" action="{!doSearch}" reRender="formId"/>  
+                          <apex:commandButton value="削除" onclick="doDeleteJs('{!mm.Id}');" style="color:#015ba7;"  id="del" reRender="formId"/>                                 
+                        </apex:column>
+                       <!--  <apex:column headerValue="企業名"  >
+                          <apex:outputlink value="https://ap2.salesforce.com/{!mm.Account__c}" target="_blank" >{!mm.Account__r.Name}</apex:outputlink>   
+                        </apex:column>-->
+                       <apex:column value="{!mm.Account__r.Name}" />                       
+                       <apex:column value="{!mm.Status__c}" />
+                       <apex:column value="{!mm.MitusmoriNenGetsu__c}" />   
+                       <apex:column value="{!mm.MitsumoriYukokikan__c}" />                        
+                   </apex:pageBlockTable>
+               </apex:outputPanel>
+          </apex:pageBlock> 
+     </apex:form>    
+</apex:page>

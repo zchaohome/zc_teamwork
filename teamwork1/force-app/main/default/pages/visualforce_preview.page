@@ -1,0 +1,39 @@
+<apex:page standardController="Contact" extensions="ContactListPageController" recordSetVar="contactList">
+ <div style="width:100%"> 
+<apex:form id="form">
+<apex:pageBlock id="results">  
+            <!--ボタンセクション -->            
+    <apex:pageBlockButtons id="condButtons">
+        <apex:commandButton value="出力" action="{!exportAction}" />
+        <apex:commandButton value="戻る" action="{!back}"/>
+    </apex:pageBlockButtons>
+     <table cellspacing="0" cellpadding="5"  style="padding:0px;15px;border-collapse:collapse;border:1px solid #808080;">
+       <tr>
+<td style="text-align: center;vertical-align:middle;background:#f0f8ff;border:1px solid #808080;width:50pt" >
+                  取引先名
+                  </td>
+                  <td style="text-align: center;vertical-align:middle;background:#f0f8ff;border:1px solid #808080;width:50pt" >
+                  取引先担当者ID
+                  </td>
+                  <td style="text-align: center;vertical-align:middle;background:#f0f8ff;border:1px solid #808080;width:50pt" >
+                  取引先担当者名
+                  </td>
+              </tr>
+              <apex:repeat var="rec" value="{!exportObjectList}">
+              <tr>
+                  <td style="vertical-align:middle;border:1px solid #808080" >
+                      <apex:outputText value="{!rec.AccountName}"/>
+                  </td>
+                  <td style="vertical-align:middle;border:1px solid #808080">
+                      <apex:outputText value="{!rec.ConactId}"/>
+                  </td>
+                  <td style="vertical-align:middle;border:1px solid #808080">
+                      <apex:outputText value="{!rec.ConactName}"/>
+                  </td>
+               </tr>
+               </apex:repeat>
+          </table>
+</apex:pageBlock>
+</apex:form>
+  </div> 
+  </apex:page>

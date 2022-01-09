@@ -1,0 +1,14 @@
+<apex:page standardController="Account">
+<apex:form >
+
+<apex:pageBlock title="Contacts">
+{!Account.Name}
+<apex:pageblockTable value="{!account}" var="c" columns="1">
+{!c.Name}
+<!--
+<apex:outputLink value="/{!c.id}">{!c.Name}</apex:outputLink>
+-->
+</apex:pageblockTable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name="showbtnflag" type="boolean" default="false" />
+    <aura:handler name="first" event="c:myEvent2" action="{!c.showbutton}"/>
+    <c:Btn1C1 />
+    <aura:if isTrue="{!v.showbtnflag}"> 
+    	<lightning:button label="Register"/>
+    </aura:if>
+</aura:component>
